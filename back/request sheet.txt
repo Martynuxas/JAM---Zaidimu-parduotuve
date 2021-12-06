@@ -1,0 +1,206 @@
+/ patikrinti ar prisijunges / ------------------------------------------------------------
+GET request	localhost:8000/login
+
+/ Atsijungti / ---------------------------------------------------------------------------
+DELETE request	localhost:8000/login
+
+/ prisijungimas / ------------------------------------------------------------------------
+POST request	localhost:8000/login
+
+{
+	"Email": "vardas@gmail.com",
+	"Password": "Password1"
+}
+
+/ Slaptazodzio keitimas / ------------------------------------------------------------------------
+PATCH request	localhost:8000/login
+
+{
+	"Password": "Password1",
+	"newPassword": "Password2",
+	"newPasswordRepeat": "Password2"
+}
+
+
+
+
+
+/ registracija /  -------------------------------------------------------------------------
+POST request	localhost:8000/account
+
+{
+	"Email": "vardas@gmail.com",
+	"Password": "Password1",
+	"RepeatPassword": "Password1"
+}
+//Email turi turėti @. Password turi tureti bent viena didziaja raide ir viena skaiciu
+//Name, LastName, UserName, DateOfBirth, Address, PostalCode, Role (nebūtini). Email, password, repadpassword (būtini).
+
+/ duomenu keitimas /  -------------------------------------------------------------------------
+PATCH request	localhost:8000/account
+LAUKU KURIU NEREDAGUOJAM NERASOM, t.y ne tuscios reiksmes, o eilutes NEBUVIMAS
+{
+	"Username": "Vardaszxzxx",
+	"Name": "Justas",
+	"LastName": "Pavarde",
+	"Address": "Pasiles 39, Kaunas",
+	"PostalCode": "868564",
+	"Role": 1
+}
+
+/Gauti nr. 1 naudotojo duomenis/----------------------------------------------------------------------
+GET request localhost:8000/account?id=1 arba tiesiog localhost:8000/account (gauna dabartinio vartotojo paskyros info)
+
+
+
+
+
+
+/ create game / --------------------------------------------------------------------------
+Galima tik prisijungus t.y atsiuntus auth token turint role = 1(admin)
+POST request	localhost:8000/games 
+
+{
+	"Name": "Battlefield 9",
+	"Description": "Clasical shooter",
+	"Price": 39.99,
+	"Category": "shooter"
+}
+
+/ edit game / --------------------------------------------------------------------------
+Galima tik prisijungus t.y atsiuntus auth token
+PATCH request	localhost:8000/games/{id}
+LAUKU KURIU NEREDAGUOJAM NERASOM, t.y ne tuscios reiksmes, o eilutes NEBUVIMAS
+{
+	"Description": "very long edited description",
+	"Category": "Shooter",
+	"Price": 5.5,
+	"Name": "Call of duty"
+}
+
+/ delete game / --------------------------------------------------------------------------
+DELETE request, gali tik savininkas	localhost:8000/games/{id}
+
+/ get game /  ---------------------------------------------------------------------------
+GET request
+localhost:8000/games?category=shooter
+arba
+localhost:8000/games?creatorID=id
+arba
+localhost:8000/games?priceFrom=20&priceTo=40
+arba
+localhost:8000/games?id=1 
+Galimi kintamieji category, creatorID, priceFrom, priceTo, gameID.
+/ sell game /  -------------------------------------------------------------------------
+PATCH request	localhost:8000/games/{id}/users (id tai žaidimo id, vartotojo id gaunamas iš session)
+
+
+
+
+
+
+/ Follow user /  -------------------------------------------------------------------------
+localhost:8000/follow/{id}
+POST request	
+
+/ Unfollow user /  -------------------------------------------------------------------------
+localhost:8000/follow/{id}
+DELETE request
+
+
+
+
+/ Get user Followers/  -------------------------------------------------------------------------
+localhost:8000/followers/{id}
+GET request	
+
+/ GET user Followings /  -------------------------------------------------------------------------
+localhost:8000/followings/{id}
+GET request
+
+
+
+
+
+
+/ GET Cart/  -------------------------------------------------------------------------
+localhost:8000/cart
+GET request
+
+/ Put game in to Cart/  -------------------------------------------------------------------------
+localhost:8000/cart/{id} (id - game id)
+POST request
+
+/ Delete game from Cart/  -------------------------------------------------------------------------
+localhost:8000/cart/{id} (id - game id)
+DELETE request
+
+
+
+
+
+
+
+/ GET wishlist/  -------------------------------------------------------------------------
+localhost:8000/wishlist
+GET request
+
+/ Put game in to wishlist/  -------------------------------------------------------------------------
+localhost:8000/wishlist/{id} (id - game id)
+POST request
+
+/ Delete game from wishlist/  -------------------------------------------------------------------------
+localhost:8000/wishlist/{id} (id - game id)
+DELETE request
+
+
+
+
+/ GET games that user bought/  -------------------------------------------------------------------------
+localhost:8000/BoughtList
+GET request
+
+
+
+
+
+
+/ GET rate/  -------------------------------------------------------------------------
+localhost:8000/rate
+GET request
+Get rate by: ID(rate id), CreatorID, Comment, GameID, From(rating from), To (rating to)
+example:
+localhost:8000/rate?from=5&CreatorID=1
+
+/ Rate game/  -------------------------------------------------------------------------
+localhost:8000/rate/{id} (id - game id)
+POST request
+{
+	"Comment": "Great Game",
+	"Score": "9.8"	
+}
+
+/ Delete rate/  -------------------------------------------------------------------------
+localhost:8000/rate/{id} (id - rate id)
+DELETE request
+
+/ Edit rate/  -------------------------------------------------------------------------
+localhost:8000/rate/{id} (id - rate id)
+You can change Comment and score of rating
+PATCH request
+{
+	"Comment": "I love it"
+}
+
+
+
+
+
+/ GET accounts/  -------------------------------------------------------------------------
+localhost:8000/accounts
+GET request
+Get rate by: FromFollowers(Where Followers < user.Followers), ToFollowers (Where Followers > user.Followers),
+FromFollowings (Where Followings < user.Followers), ToFollowings (Where Followings > user.Followers)
+example:
+localhost:8000/accounts?FromFollowers=0&ToFollowers=10&ToFollowings=5 
+(where user has more than 0 followers and less than 10 followers and follows less than 5 users)
