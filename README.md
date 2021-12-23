@@ -1,4 +1,4 @@
-    Žaidimų parduotuvė.
+#Žaidimų parduotuvė.
 
     Žaidimų parduotuvės informacinė sistema yra skirta vartotojams parduoti žaidimus bei žaidimų konsoles. Sistemą sudaro trys posistemiai: klientų dalies valdymo, prekių dalies valdymo ir pirkimo dalies valdymo.
 Internetinėje svetainėje svečiai vienam el. pašto adresui gali sukurti vieną paskyrą ir taip tapti parduotuvės klientais. Tai padaryti vartotojai gali nuėję į registracijos langą ir įvedę savo el. pašto adresą, vardą bei dukart įrašę slaptažodį. Klientai gali keisti savo paskyros duomenis (el. pašto adresą, slaptažodį bei vardą).
