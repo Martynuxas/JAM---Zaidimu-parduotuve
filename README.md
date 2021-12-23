@@ -1,3 +1,5 @@
+  Kiekvienais metais žaidėjų skaičius pasaulyje didėja, o žaidimų industrija toliau klesti (1), todėl atitinkamai auga ir žaidimų bei jų parduotuvių paklausa. Tad modulio metu buvo pasirinkta kurti žaidimų parduotuvės informacinę sistemą. Internetinė parduotuvė pasižymės aiškiu intuityviu valdymu bei pravarčiomis funkcijomis, pavyzdžiui, bus siūloma įvairovė prekių: kompiuteriniai žaidimai, stalo žaidimai bei žaidimų konsolės. Be to, prekes bus galima vertinti ir apie jas palikti apžvalgas, informuojančias kitus vartotojus. O jau išsirinkus prekes, jomis bus galima papildyti norų sąrašą arba jas iškart įdėti į prekių krepšelį. Taigi, siekiama sukurti patrauklią ir tinkamai funkcionuojančią žaidimų parduotuvės informacinę sistemą.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
